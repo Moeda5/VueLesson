@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>这里以后不改了</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>你好，{{name}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false; //阻止 vue 在启动时生成生产提示
+
+        const v = new Vue({
+            //el:'#root', //el用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串
+            
+            //data的第一种写法，对象式
+            // data:{
+            //     name:'Jack',
+            //     url:'https://www.ruanfan.fun.fun'
+            // }
+
+            //data的第二种写法：函数式
+            data:function(){//function也可以省去
+                console.log('@@@',this)//此处的this是Vue实例对象
+                return{
+                    name:'jack'
+                }
+            }
+        })
+        console.log(v)
+        // 这是另外一种指定容器的方法
+        v.$mount('#root')
+
+        // 也可以这样定时关联
+        // setTimeout(() => {
+        //     v.$mount('#root')
+        // },1000)
+
+
+    </script>
+
+</body>
+</html>

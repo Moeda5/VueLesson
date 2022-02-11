@@ -1,0 +1,5 @@
+Vue.set(你要操作的对象,给对象添加一个什么属性,这个属性给什么值)
+另一种方法 这里假设操作的对象是student  给student加一个key为sex value为女
+vm.$set(vm.student,‘sex’，‘女’)  vm在函数里使用时用this
+
+注意set只能给vue里的某个对象追加属性 但是不能给data追加属性

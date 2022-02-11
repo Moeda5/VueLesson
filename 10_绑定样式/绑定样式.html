@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .basic{
+            width:400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .happy{
+            background-color: blueviolet;
+        }
+        .sad{
+            background-color: gray;
+        }
+        .normal{
+            background-color: blue;
+        }
+        .ruanfan1{
+            border-radius: 4px;
+        }
+        .ruanfan2{
+            font-size: 40px;
+        }
+        .ruanfan3{
+            outline-style: dotted;
+            outline-color: blue;
+        }
+        .buttonTest{
+            float: right;
+        }
+        .table{
+            height: 400px;
+        }
+        .tableDiv{
+            overflow: scroll;
+        }
+    </style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 绑定class样式--字符串写法 适用于：样式的类名不确定，需要动态指定 -->
+        <div class="basic " :class="mood" @click="changeMood">{{name}}1</div><br><br>
+        <!-- 绑定class样式--数组写法 适用于：要绑定的样式个数不确定 名字也不确定 -->
+        <div class="basic " :class="classArr" >{{name}}2</div>
+        <!-- 绑定class样式--对象写法 适用于：要绑定的样式个数确定 名字也确定 但要动态决定用不用 -->
+        <div class="basic " :class="classObj" >{{name}}3<button class="buttonTest" >点我</button></div>
+
+        <div class="basic " :class="classObj" :style="styleObj" >{{name}}4</div>
+        <div class="basic" >
+            表格滚动条测试
+            <table class="basic tableDiv" :style="styleObj">
+                <tr v-for="key in tableH"><td v-for="value in tableL">{{value}}</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el:'#root',
+        data:{
+            name:'Jack',
+            mood:'normal',
+            tableH:{
+                H1:'行1',
+                H2:'行2',
+                H3:'行3',
+                H4:'行4',
+                H5:'行5'
+            },
+            tableL:{
+                L1:'列1',
+                L2:'列2',
+                L3:'列3',
+            },
+            classArr:['ruanfan1','ruanfan2','ruanfan3'],
+            classObj:{
+                ruanfan1:false,
+                ruanfan2:false,
+            },
+            styleObj:{
+                fontSize: '20px',
+                color:'red',
+                backgroundColor:'blue'
+            }
+          
+        },
+        methods: {
+            // 点击后随机选取一个心情
+            changeMood(){
+                const arr = ['happy','sad','normal']
+                const index = Math.floor(Math.random()*3)
+                this.mood = arr[index]
+            }
+        },
+    })
+</script>
+</html>

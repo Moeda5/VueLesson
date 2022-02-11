@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<!-- 1.vue 中常用的按键别名：
+    回车    enter
+    删除    delete 捕获退格和删除
+    退出    esc
+    空格    space
+    换行    tab
+    上下左右    up  down    left    right -->
+<body>
+    <div id="root">
+        <h2>欢迎来到{{name}}</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el:'#root',
+        data:{
+            name:'ruanfan.fun',
+        },
+        methods:{
+            showInfo(e){
+                // 这是非Vue做法
+                // if (e.key != "Enter") {
+                //     return
+                // }
+                console.log(e.target.value)
+            }
+        }
+    })
+</script>
+</html>

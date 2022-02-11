@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .basic{
+            width:400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .buttonTest{
+            float: right;
+        }
+        .table{
+            height: 400px;
+            width: 380px;
+        }
+        .tableDiv{
+            overflow: scroll;
+        }
+    </style>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+      
+        <div class="basic tableDiv" >
+            表格滚动条测试
+            <table class="basic table" >
+                <tr v-for="key in tableH"><td v-for="value in tableL">{{value}}</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el:'#root',
+        data:{
+          
+            tableH:{
+                H1:'行1',
+                H2:'行2',
+                H3:'行3',
+                H4:'行4',
+                H5:'行5'
+            },
+            tableL:{
+                L1:'列1',
+                L2:'列2',
+                L3:'列3',
+            },
+            
+          
+        },
+        methods: {
+          
+        },
+    })
+</script>
+</html>

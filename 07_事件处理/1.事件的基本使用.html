@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>欢迎来到{{name}}学习</h2>
+        <button v-on:click="showInfo">点我提示信息(不传参)</button>
+        <!-- 以下为简写形式 -->
+        <button @click="showInfo2(66,$event)">点我提示信息2（传参）</button>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el:'#root',
+        data:{
+            name:'banma'
+        },
+        methods:{
+            showInfo(event){
+                alert('同学你好1')
+                console.log(event)
+            },
+            showInfo2(number,event){
+                console.log(number,event)
+                event.target.innerText = "33"
+                this.name = "hahah"
+            }
+        }
+    })
+</script>
+</html>

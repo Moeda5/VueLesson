@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <form @submit.prevent='updata'>
+            <label for="demo">账号：</label>
+            <input type="text" id="demo" v-model.trim='id'>
+            <br>
+            <label for="ps">密码：</label>
+            <input type="password" id="ps" v-model='password'>
+            <br>
+            <label for="age">年龄：</label>
+            <input type="number" id="age" v-model.number='age'>
+            <br>
+            性别：
+            男<input type="radio" value="男" name="sex" v-model='sex'>
+            女<input type="radio" value="女" name="sex" v-model='sex'>
+            <br>
+            爱好：
+            抽烟<input type="checkbox" value="抽烟" v-model="hobby">
+            喝酒<input type="checkbox" value="喝酒" v-model="hobby">
+            烫头<input type="checkbox" value="烫头" v-model="hobby">
+            <br>
+            所属校区
+            <select name="" id="" v-model="city">
+                <option value="">请选择校区</option>
+                <option value="bj">北京</option>
+                <option value="sh">上海</option>
+                <option value="tj">天津</option>
+            </select>
+            <br>
+            其它信息：
+            <br>
+            <textarea cols="30" rows="10" v-model.lazy="msg"></textarea>
+            <br>
+            <input type="checkbox" v-model="agree">
+            阅读并接受<a href="www.ruanfan.fun">《用户协议》</a>
+            <br>
+            <button>注册</button>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el:'#root',
+        data:{
+            id:'',
+            password:'',
+            sex:'男',
+            age:'',
+            hobby:[],
+            city:'',
+            msg:'',
+            agree:''
+        },
+        methods: {
+            updata(){
+                console.log(JSON.stringify(this._data))
+            }
+        },
+    })
+</script>
+</html>

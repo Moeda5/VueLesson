@@ -25,3 +25,26 @@ lintOnSave:false
     打标识  <h1 ref="xxx"></h1>
     获取：this.$refs.xxx
  -->
+
+## 配置项props
+<!-- 
+太长了，不想写了。自己看03吧
+ -->
+
+## mixin(混入)
+<!-- 
+    功能:可以吧多个组件共用的配置提取成一个混入对象
+    使用方式:
+        第一步定义混合,例如:
+        export const weilefangzhiniyunsuoyiqilegezhegemingzi = {
+            methods: {
+            showName(){
+                alert(this.name)
+        }
+    },
+}
+        第二步使用混入,例如:
+        1.全局混入: Vue.mixin(xxx)
+        2.局部混入：mixins:['xxx']
+
+ -->

@@ -48,3 +48,16 @@ lintOnSave:false
         2.局部混入：mixins:['xxx']
 
  -->
+
+ ## 插件
+<!-- 
+    功能:用于增强Vue
+    本质包含install方法的一个对象,install的第一个参数是Vue,第二个以后的参数是插件使用者传递的数据.
+    定义插件:详见plugins.js
+ -->
+
+ ## scoped样式
+<!-- 
+    作用：让样式布局在局部生效，防止冲突
+    写法：<style scoped>
+ -->

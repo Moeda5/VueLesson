@@ -17,8 +17,8 @@
     }
 </script>
 
-<style scoped>
+<style>
     .demo{
-        background-color: rgb(3, 176, 199);
+        background-color: orange;
     }
 </style>

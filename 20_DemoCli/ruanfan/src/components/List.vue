@@ -1,10 +1,7 @@
 <template>
     <div>
         <ul class="todo-main">
-            <item></item>
-            <item></item>
-            <item></item>
-            <item></item>
+            <item v-for="todoobj in todos" :key="todoobj.id" :todoobj='todoobj'></item>
         </ul>
     </div>
 </template>
@@ -13,8 +10,17 @@
     import Item from './Item'
 
     export default {
-    components: { Item },
         name:'List',
+        components: { Item },
+        data() {
+            return {
+                todos:[
+                    {id:'001',title:'抽烟',done:true},
+                    {id:'002',title:'喝酒',done:false},
+                    {id:'003',title:'开车',done:true},
+                ]
+            }
+        },
     }
 </script>
 

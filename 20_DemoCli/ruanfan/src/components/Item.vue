@@ -2,8 +2,8 @@
     <div>
         <li>
             <label>
-                <input type="checkbox"/>
-                <span>xxxxx</span>
+                <input type="checkbox" :checked='todoobj.done' />
+                <span>{{ todoobj.title }}</span>
             </label>
             <button class="btn btn-danger" style="display:none">删除</button>
         </li>
@@ -14,7 +14,12 @@
 <script>
     export default {
         name:'Item',
+        props:['todoobj'],
+        mounted() {
+            console.log(this.todoobj)
+        }
     }
+    
 </script>
 
 <style scoped>

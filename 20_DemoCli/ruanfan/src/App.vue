@@ -25,8 +25,7 @@
         components:{
            Top,
            List,
-           Down,
-                
+           Down,      
         },
     }
 </script>

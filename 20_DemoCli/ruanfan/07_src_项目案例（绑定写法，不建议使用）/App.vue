@@ -7,7 +7,7 @@
         <div class="todo-container">
             <div class="todo-wrap">
                 <top :receive="receive"></top>
-                <list :todos='todos' :checkTodo="checkTodo" :deleteTodo="deleteTodo"></list>
+                <list :todos='todos'></list>
                 <down></down>
             </div>
         </div>
@@ -40,20 +40,6 @@
             receive(todoobj){
                 this.todos.unshift(todoobj)
             },
-            //勾选or取消勾选一个todo
-            checkTodo(id){
-                this.todos.forEach((todo)=>{
-                    if (todo.id === id) {
-                        todo.done = !todo.done
-                    }
-                })
-            },
-            //删除一个todo
-            deleteTodo(id){
-                this.todos = this.todos.filter((todo)=>{
-                    return todo.id !== id
-                })
-            }
         }
     }
 </script>

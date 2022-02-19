@@ -8,7 +8,7 @@
     import {nanoid} from 'nanoid'
     export default {
         name:'Top',
-        props:['receive'],
+        
         methods:{
             add(event){
                 //校验数据
@@ -21,8 +21,8 @@
                     title:event.target.value,
                     done:false
                 }
-                //通知App组件去添加一个todo对象
-                this.receive(todoobj)
+                //调用APP绑定的自定义组件
+                this.$emit('receive',todoobj)
                 //清空输入
                 event.target.value = ''
             }

@@ -8,7 +8,7 @@
             <div class="todo-wrap">
                 <top :receive="receive"></top>
                 <list :todos='todos' :checkTodo="checkTodo" :deleteTodo="deleteTodo"></list>
-                <down :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"></down>
+                <down :todos="todos"></down>
             </div>
         </div>
     </div>
@@ -29,8 +29,11 @@
         },
         data() {
             return {
-                //读   这个 或 的意思是第一次打开页面 为null时 这个不为真时 这里就是空数组 这样之后的.length才是0
-                todos:JSON.parse(localStorage.getItem('todos')) || []
+                todos:[
+                    {id:'001',title:'抽烟',done:true},
+                    {id:'002',title:'喝酒',done:false},
+                    {id:'003',title:'开车',done:true},
+                ]
             }
         },
         methods: {
@@ -50,32 +53,6 @@
                 this.todos = this.todos.filter((todo)=>{
                     return todo.id !== id
                 })
-            },
-            //全选或全不选
-            checkAllTodo(done){
-                this.todos.forEach((todo)=>{
-                    todo.done = done
-                })
-            },
-            //清除所有已经完成的todo
-            clearAllTodo(){
-                this.todos = this.todos.filter((todo)=>{
-                    return !todo.done
-                })
-            }
-        },
-        watch:{
-            //存 以下为简写形式 只能监视 对象外层变化  里层比如说done的变化监视不到
-            // todos(newvalue){
-            //     localStorage.setItem('todos',JSON.stringify(newvalue))
-            // }
-
-            //以下为深度监视方法
-            todos:{
-                deep:true,
-                handler(newvalue){
-                    localStorage.setItem('todos',JSON.stringify(newvalue))
-                }
             }
         }
     }

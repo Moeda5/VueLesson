@@ -1,19 +1,19 @@
 <template>
-    <div class="todo-footer" v-show="this.todos.length">
+    <div class="todo-footer">
                 <label>
-                <input type="checkbox" :checked="isAll" @change="checkAll"/>
+                <input type="checkbox"/>
                 </label>
                 <span>
                 <span>已完成{{doneTotal}}</span> / 全部{{ todos.length }}
                 </span>
-                <button class="btn btn-danger" @click="clearAll">清除已完成任务</button>
+                <button class="btn btn-danger">清除已完成任务</button>
     </div>
 </template>
 
 <script>
     export default {
         name:'Down',
-        props:['todos','checkAllTodo','clearAllTodo'],
+        props:['todos'],
         computed: {
             doneTotal(){
                 //一般写法
@@ -30,21 +30,6 @@
                     return pre + (current.done ? 1 : 0)
                 },0)
                 //注意 上面这个0 是初始值
-            },
-            isAll(){
-                if (this.doneTotal === this.todos.length && this.todos.length > 0) {
-                    return true
-                } else {
-                    return false
-                }
-            }
-        },
-        methods:{
-            checkAll(e){
-                this.checkAllTodo(e.target.checked)
-            },
-            clearAll(){
-                this.clearAllTodo()
             }
         }
     }

@@ -95,3 +95,29 @@ lintOnSave:false
     4.最好在beforeDestroy钩子中，用$off去解绑当前组件所用到的事件
 
    -->
+
+   ## 消息订阅与发布（pubsub）
+   <!-- 
+    1.一种组件间通信的方式，适用于任意组件通信
+    2.使用步骤：
+        1.安装pubsub： npm i pubsub-js
+        2.引入：import pubsub from 'pubsub-js'
+        3.接受数据：A组件想接受数据，则在A组件中订阅消息，订阅的回调留在A组件自身
+        methods(){
+            demo(data){.......}
+        }
+        .........
+        mounted(){
+            this.pubId = pubsub.subscribe('xxx',this.demo)//订阅消息 
+        }
+        4.发布消息：pubsub.publish('xxx',数据)
+        5.最好在beforeDestroy钩子中，用pubsub.unsubscribe(this.pubID)取消订阅
+    -->
+
+## nextTick
+<!-- 
+    nextTick 会在下一次DOM更新之后再回调
+        this.$nextTick(
+            ()=>this.$refs.inputTitle.focus()
+        )
+-->

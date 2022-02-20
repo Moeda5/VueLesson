@@ -43,14 +43,6 @@
                     }
                 })
             },
-            //改
-            updateTodo(id,title){
-                this.todos.forEach((todo)=>{
-                    if (todo.id === id) {
-                        todo.title = title
-                    }
-                })
-            },
             //删除一个todo  这个下划线是占位用的 意思是收msgName但是不用
             deleteTodo(_,id){
                 this.todos = this.todos.filter((todo)=>{
@@ -86,13 +78,11 @@
         },
         mounted() {
             this.$bus.$on('checkTodo',this.checkTodo)
-            this.$bus.$on('updateTodo',this.updateTodo)
             //订阅一个消息  并拿到这个订阅的ID方便之后取消订阅
             this.pubId = pubsub.subscribe('deleteTodo',this.deleteTodo)
         },
         beforeDestroy() {
             this.$bus.$off('checkTodo')
-            this.$bus.$off('updateTodo')
             //取消一个订阅
             pubsub.unsubscribe('this.pubId')
         }
@@ -120,18 +110,6 @@
     color: #fff;
     background-color: #da4f49;
     border: 1px solid #bd362f;
-    }
-    .btn-edit {
-    color: #fff;
-    background-color: skyblue;
-    border: 1px solid rgb(3, 142, 197);
-    margin-right: 5px;
-    }
-    .btn-edit:hover{
-    color: #fff;
-    background-color: rgb(8, 137, 189);
-    border: 1px solid rgb(3, 142, 197);
-    margin-right: 5px;
     }
     .btn-danger:hover {
     color: #fff;

@@ -19,6 +19,10 @@
             this.$bus.$on('hello',(data)=>{
                 console.log('我是School组件，收到了数据',data)
             })
+        },
+        //一般做法 在销毁这个组件的时候要销毁这个绑定
+        beforeDestroy(){
+            this.$bus.$off('hello')
         }
     }
 </script>

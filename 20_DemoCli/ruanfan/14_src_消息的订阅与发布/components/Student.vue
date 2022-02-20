@@ -7,6 +7,7 @@
 </template>
 
 <script>
+    import pubsub from 'pubsub-js'
     export default {
         name:'Student',
         data() {
@@ -17,7 +18,8 @@
         },
         methods: {
             sendStudentName(){
-                this.$bus.$emit('hello',666)
+                //发布hello消息  该消息带了个参数 666
+                pubsub.publish('hello',666)
             }
         }
     }

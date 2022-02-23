@@ -121,3 +121,10 @@ lintOnSave:false
             ()=>this.$refs.inputTitle.focus()
         )
 -->
+
+## 代理
+<!-- 
+    写在了vue.config.js 和 App.vue中
+    值得注意的一点 如果代理服务器中 也就是本地public文件夹中有你要拿的文件
+    会优先从本地拿，而不是从远程端拿
+ -->

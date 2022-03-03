@@ -6,12 +6,46 @@ import Vuex from 'vuex'
 //使用
 Vue.use(Vuex)
 
-//准备actions————用于响应组件中的动作
-const actions = {}
+//准备actions————用于响应组件中的动作 context相当于一个ministore 上下文
+//dispatch跟actions对话
+const actions = {
+    // jia(context,value){
+    //     console.log("jiajiajia")
+    //     context.commit("JIA",value)
+    // },
+    // jian(context,value){
+    //     console.log("jianjianjia")
+    //     context.commit("JIAN",value)
+    // },
+    jiaOdd(context,value){
+        console.log("jiaOdd")
+        if(context.state.sum % 2){
+            context.commit("JIA",value)
+        }
+    },
+    jiaWait(context,value){
+        console.log("wait")
+        setTimeout(()=>{
+            context.commit("JIA",value)
+        },500)
+    },
+}
 //准备mutations————用于操作数据（state）
-const mutations = {}
+//commit跟mutations对话
+const mutations = {
+    JIA(satte,value){
+        console.log("JIAJIAJIA")
+        state.sum += value
+    },
+    JIAN(satte,value){
+        console.log("JIANJIANJIAN")
+        state.sum -= value
+    },
+}
 //准备state————用于存储数据
-const state = {}
+const state = {
+    sum:0,//当前的和
+}
 
 
 //创建store 暴露store

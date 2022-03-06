@@ -186,4 +186,9 @@ lintOnSave:false
         3.组件中修改vuex中的数据：$store。dispatch('action中的方法名'，数据)或$store.commit('mutaitions中的发发明',数据)
         备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写dispatch，直接编写commit
 
+    mapState 用于帮助我们映射State
+    ,mapGetters, 用于帮助我们映射Getters
+    
+    mapMutations, 同上  备注mapMutations mapActions 如果需要传递数据
+    mapActions，同上    需要在模板绑定事件时传递好参数 （具体看代码就是把n传进去了 xxxx（n） 而不能直接xxxx）
  -->

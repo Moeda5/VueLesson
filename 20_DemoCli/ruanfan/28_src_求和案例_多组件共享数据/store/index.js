@@ -41,12 +41,18 @@ const mutations = {
         console.log("JIANJIANJIAN")
         state.sum -= value
     },
+    ADD_PERSON(state,personObj){
+        state.personList.unshift(personObj)
+    }
 }
 //准备state————用于存储数据  他相当于组件里的data
 const state = {
     sum:0,//当前的和
     school:'尚硅谷',
-    subject:'前端'
+    subject:'前端',
+    personList:[
+        {id:'001',name:'张三'}
+    ]
 }
 //准备getters——用于将state中的数据进行加工  他相当于组件里的computed
 const getters = {

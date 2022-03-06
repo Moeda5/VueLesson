@@ -33,11 +33,11 @@ const actions = {
 //准备mutations————用于操作数据（state）
 //commit跟mutations对话
 const mutations = {
-    JIA(satte,value){
+    JIA(state,value){
         console.log("JIAJIAJIA")
         state.sum += value
     },
-    JIAN(satte,value){
+    JIAN(state,value){
         console.log("JIANJIANJIAN")
         state.sum -= value
     },

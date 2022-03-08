@@ -191,4 +191,41 @@ lintOnSave:false
     
     mapMutations, 同上  备注mapMutations mapActions 如果需要传递数据
     mapActions，同上    需要在模板绑定事件时传递好参数 （具体看代码就是把n传进去了 xxxx（n） 而不能直接xxxx）
+
+
  -->
+
+ ## Router
+ <!-- 
+    1.安装vue-router， 命令： npm i vue-router
+
+    2.应用插件：Vue.use(VueRouter)    写在main里
+
+    3.编写router配置项：src\router\index.js
+        //该文件专门用于创建整个应用的路由器
+        
+        //引入VueRouter
+        import VueRouter from "vue-router";
+
+        import About from '../components/About'
+        import Home from '../components/Home'
+        //创建并暴露一个路由器
+        export default new VueRouter({
+            routes:[
+                {
+                    path:'/about',
+                    component:About
+                },
+                {
+                    path:'/home',
+                    component:Home
+                }
+            ]
+        })
+
+    4.实现切换 active-class 可配置高亮样式
+        <router-link class="list-group-item" active-class="active" to="/about" >About</router-link>
+
+    5.指定展示位置
+        <router-view></router-view>
+  -->

@@ -229,3 +229,28 @@ lintOnSave:false
     5.指定展示位置
         <router-view></router-view>
   -->
+
+## 编程式路由导航
+<!-- 
+    this.$router.push({
+        name:'xiangqing',
+        query:{
+            id:m.id,
+            title:m.title
+        }
+    })
+
+    replaceShow(m){
+        this.$router.replace({
+            name:'xiangqing',
+            query:{
+                id:m.id,
+                title:m.title
+            }
+        })
+    }
+
+    this.$router.forward()
+    this.$router.back()
+    this.$router.go()
+ -->

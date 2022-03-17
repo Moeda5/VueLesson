@@ -7,8 +7,8 @@ import News from '../pages/News'
 import Message from '../pages/Message'
 import Detail from '../pages/Detail'
 
-
-const router = new VueRouter({
+//创建并暴露一个路由器
+export default new VueRouter({
     routes:[
         //一级路由
         {
@@ -17,18 +17,15 @@ const router = new VueRouter({
             component:About
         },
         {
-            name:'zhuye',
             path:'/home',
             component:Home,
             //二级路由
             children:[
                 {
-                    name:'xinwen',
                     path:"news",
                     component:News,
                 },
                 {
-                    name:'xiaoxi',
                     path:"message",
                     component:Message,
                     //三级路由
@@ -60,19 +57,4 @@ const router = new VueRouter({
         }
     ]
 })
-//全局前置路由守卫————初始化的时候被调用，每次路由切换之前被调用
-router.beforeEach((to,from,next)=>{
-    console.log(to,from)
-    //这里也可以用name判断   to.name === 'xinwen'
-    if (to.path === '/home/news' || to.path === '/home/message') {
-        if(localStorage.getItem('school')==='ruanfan'){
-            next()
-        }else{
-            alert('学校名不对，无权限查看')
-        }
-    }else{
-        next()
-    }
-})
 
-export default router

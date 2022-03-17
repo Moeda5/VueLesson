@@ -254,3 +254,49 @@ lintOnSave:false
     this.$router.back()
     this.$router.go()
  -->
+
+## 缓存路由组件
+ <!-- 
+    这里这个名字是组件名 就是export default 里面那个name
+    <keep-alive include="News">
+        <router-view></router-view>
+    </keep-alive>
+
+    如果缓存多个，但又不全部缓存可以写成数组
+    <keep-alive :include="['News','Message']">
+        <router-view></router-view>
+    </keep-alive>
+-->
+
+## 两个新的生命周期钩子 
+<!-- 
+    //激活  
+    activated(){
+        this.timer = setInterval(() => {
+            this.opacity -= 0.01
+            if (this.opacity <= 0) this.opacity = 1
+        },16) 
+    },
+    //失活
+    deactivated(){
+        clearInterval(this.timer)
+    }
+ -->
+
+ ## 全局前置路由守卫
+<!-- 
+    //全局前置路由守卫————初始化的时候被调用，每次路由切换之前被调用
+    router.beforeEach((to,from,next)=>{
+        console.log(to,from)
+        //这里也可以用name判断   to.name === 'xinwen'
+        if (to.path === '/home/news' || to.path === '/home/message') {
+            if(localStorage.getItem('school')==='ruanfan'){
+                next()
+            }else{
+                alert('学校名不对，无权限查看')
+            }
+        }else{
+            next()
+        }
+    })
+ -->

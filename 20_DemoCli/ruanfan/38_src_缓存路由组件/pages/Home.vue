@@ -14,7 +14,12 @@
             <keep-alive include="News">
                 <router-view></router-view>
             </keep-alive>
-            
+            <!-- 
+                如果缓存多个，但又不全部缓存可以写成数组
+                <keep-alive :include="['News','Message']">
+                    <router-view></router-view>
+                </keep-alive>
+             -->
             </div>
         </div>
 </template>

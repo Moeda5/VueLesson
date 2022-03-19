@@ -283,7 +283,7 @@ lintOnSave:false
     }
  -->
 
- ## 全局前置路由守卫
+## 全局前置路由守卫
 <!-- 
     //全局前置路由守卫————初始化的时候被调用，每次路由切换之前被调用
     router.beforeEach((to,from,next)=>{
@@ -299,4 +299,68 @@ lintOnSave:false
             next()
         }
     })
+ -->
+
+ ## 全局后置路由守卫
+ <!-- 
+    //全局后置路由守卫————初始化的时候被调用，每次路由切换之后被调用
+    router.afterEach((to,from)=>{
+        console.log('后置路由守卫',to,from)
+        document.title = to.meta.title || '软饭系统'
+    })
+  -->
+## 独享路由守卫
+<!-- 
+    children:[
+        {
+            name:'xinwen',
+            path:"news",
+            component:News,
+            meta:{isAuth:true,title:'新闻'},
+            //独享路由守卫 注意只有前置 没有后置
+            beforeEnter: (to,from,next) => {
+                if (to.meta.isAuth) {//判断是否需要鉴权
+                    if(localStorage.getItem('school')==='ruanfan'){
+                        //给每个路由标签名 这个东西也能放全局后置路由守卫里
+                        //document.title = to.meta.title || '软饭系统'
+                        next()
+                    }else{
+                        alert('学校名不对，无权限查看')
+                    }
+                }else{
+                    //给每个路由标签名 这个东西也能放全局后置路由守卫里
+                    //document.title = to.meta.title || '软饭系统'
+                    next()
+                }
+            }
+        },
+ -->
+
+## 组件内守卫
+<!-- 
+    //通过路由规则，进入该组件时被调用
+    beforeRouteEnter (to, from, next) {
+        
+    },
+    //通过路由规则，离开该组件时被调用
+    beforeRouteLeave (to, from, next) {
+        
+    }
+-->
+
+## 路由器的两种工作模式
+<!-- 
+    1.对于一个URL来说，什么是hash值？————#及其后面的就是hash值
+    2.hash值不会包含在HTTP请求中，即：hash值不会带给服务器
+    3.hash模式
+        1.地址中永远带着#，不美观
+        2.若以后见地址通过第三方手机分享，若APP校验严格，则地址会被标记为不合法
+        3.兼容性较好
+    4.history模式
+        1.地址干净，美观。
+        2.兼容性和hash模式相比略差
+        3.应用部署上线时需要后端人员支持，解决刷新页面服务器404的问题
+    
+    5.npm run build  这个是打包命令
+    另外本课附带了怎么做一个简单的服务器方法。
  -->

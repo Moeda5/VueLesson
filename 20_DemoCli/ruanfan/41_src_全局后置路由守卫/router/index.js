@@ -9,15 +9,13 @@ import Detail from '../pages/Detail'
 
 
 const router = new VueRouter({
-    //mode 有2种模式 history   hash 默认是hash
-    mode:'history',
     routes:[
         //一级路由
         {
             name:'guanyu',
             path:'/about',
             component:About,
-            meta:{isAuth:true,title:'关于'}
+            meta:{title:'关于'}
         },
         {
             name:'zhuye',
@@ -30,23 +28,7 @@ const router = new VueRouter({
                     name:'xinwen',
                     path:"news",
                     component:News,
-                    meta:{isAuth:true,title:'新闻'},
-                    //独享路由守卫 注意只有前置 没有后置
-                    // beforeEnter: (to,from,next) => {
-                    //     if (to.meta.isAuth) {//判断是否需要鉴权
-                    //         if(localStorage.getItem('school')==='ruanfan'){
-                    //             //给每个路由标签名 这个东西也能放全局后置路由守卫里
-                    //             //document.title = to.meta.title || '软饭系统'
-                    //             next()
-                    //         }else{
-                    //             alert('学校名不对，无权限查看')
-                    //         }
-                    //     }else{
-                    //         //给每个路由标签名 这个东西也能放全局后置路由守卫里
-                    //         //document.title = to.meta.title || '软饭系统'
-                    //         next()
-                    //     }
-                    // }
+                    meta:{isAuth:true,title:'新闻'}
                 },
                 {
                     name:'xiaoxi',
@@ -84,24 +66,24 @@ const router = new VueRouter({
     ]
 })
 //全局前置路由守卫————初始化的时候被调用，每次路由切换之前被调用
-// router.beforeEach((to,from,next)=>{
-//     console.log('前置路由守卫',to,from)
+router.beforeEach((to,from,next)=>{
+    console.log('前置路由守卫',to,from)
     
-//     //这里也可以用name判断   to.name === 'xinwen'
-//     if (to.meta.isAuth) {//判断是否需要鉴权
-//         if(localStorage.getItem('school')==='ruanfan'){
-//             //给每个路由标签名 这个东西也能放全局后置路由守卫里
-//             //document.title = to.meta.title || '软饭系统'
-//             next()
-//         }else{
-//             alert('学校名不对，无权限查看')
-//         }
-//     }else{
-//         //给每个路由标签名 这个东西也能放全局后置路由守卫里
-//         //document.title = to.meta.title || '软饭系统'
-//         next()
-//     }
-// })
+    //这里也可以用name判断   to.name === 'xinwen'
+    if (to.meta.isAuth) {//判断是否需要鉴权
+        if(localStorage.getItem('school')==='ruanfan'){
+            //给每个路由标签名 这个东西也能放全局后置路由守卫里
+            //document.title = to.meta.title || '软饭系统'
+            next()
+        }else{
+            alert('学校名不对，无权限查看')
+        }
+    }else{
+        //给每个路由标签名 这个东西也能放全局后置路由守卫里
+        //document.title = to.meta.title || '软饭系统'
+        next()
+    }
+})
 
 //全局后置路由守卫————初始化的时候被调用，每次路由切换之后被调用
 router.afterEach((to,from)=>{

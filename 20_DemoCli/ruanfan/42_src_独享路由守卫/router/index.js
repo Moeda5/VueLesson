@@ -9,15 +9,13 @@ import Detail from '../pages/Detail'
 
 
 const router = new VueRouter({
-    //mode 有2种模式 history   hash 默认是hash
-    mode:'history',
     routes:[
         //一级路由
         {
             name:'guanyu',
             path:'/about',
             component:About,
-            meta:{isAuth:true,title:'关于'}
+            meta:{title:'关于'}
         },
         {
             name:'zhuye',
@@ -32,21 +30,21 @@ const router = new VueRouter({
                     component:News,
                     meta:{isAuth:true,title:'新闻'},
                     //独享路由守卫 注意只有前置 没有后置
-                    // beforeEnter: (to,from,next) => {
-                    //     if (to.meta.isAuth) {//判断是否需要鉴权
-                    //         if(localStorage.getItem('school')==='ruanfan'){
-                    //             //给每个路由标签名 这个东西也能放全局后置路由守卫里
-                    //             //document.title = to.meta.title || '软饭系统'
-                    //             next()
-                    //         }else{
-                    //             alert('学校名不对，无权限查看')
-                    //         }
-                    //     }else{
-                    //         //给每个路由标签名 这个东西也能放全局后置路由守卫里
-                    //         //document.title = to.meta.title || '软饭系统'
-                    //         next()
-                    //     }
-                    // }
+                    beforeEnter: (to,from,next) => {
+                        if (to.meta.isAuth) {//判断是否需要鉴权
+                            if(localStorage.getItem('school')==='ruanfan'){
+                                //给每个路由标签名 这个东西也能放全局后置路由守卫里
+                                //document.title = to.meta.title || '软饭系统'
+                                next()
+                            }else{
+                                alert('学校名不对，无权限查看')
+                            }
+                        }else{
+                            //给每个路由标签名 这个东西也能放全局后置路由守卫里
+                            //document.title = to.meta.title || '软饭系统'
+                            next()
+                        }
+                    }
                 },
                 {
                     name:'xiaoxi',

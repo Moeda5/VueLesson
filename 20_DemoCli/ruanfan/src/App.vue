@@ -1,33 +1,20 @@
 <template>
     <div>
-        <div class="row">
-            <banner/>
-        </div>
-        <div class="row">
-        <div class="col-xs-2 col-xs-offset-2">
-            <div class="list-group">
-                <!-- vue中借助router-林肯标签实现路由的切换 -->
-                <router-link class="list-group-item" active-class="active" :to="{name:'guanyu'}" >About</router-link>
-                <router-link class="list-group-item" active-class="active" to="/home" >Home</router-link>
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="panel">
-            <div class="panel-body">
-                <!-- 指定组件的呈现位置 -->
-                <router-view></router-view>
-
-            </div>
-            </div>
-        </div>
-        </div>
+        <button>原生按钮</button>
+        <input type="text" />
+        <el-row>
+            <el-button>默认按钮</el-button>
+            <el-button type="primary">主要按钮</el-button>
+            <el-button type="success">成功按钮</el-button>
+            <el-button type="info">信息按钮</el-button>
+            <el-button type="warning">警告按钮</el-button>
+            <el-button type="danger">危险按钮</el-button>
+        </el-row>
     </div>
 </template>
 
 <script>
-    import Banner from './components/Banner.vue'
-    export default {
-        name:'App',
-        components:{Banner}
-    }
+export default {
+    name: "App",
+};
 </script>

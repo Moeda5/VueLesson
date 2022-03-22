@@ -46,16 +46,7 @@ export default {
             msg,
             person
         }
-    },
-    beforeCreate(){},
-    created(){},
-    beforeMount(){},
-    mounted(){},
-    beforeUpdate(){},
-    updated(){},
-    beforeUnmount(){},
-    unmounted(){}
-
+    }  
 }
 </script>
 
